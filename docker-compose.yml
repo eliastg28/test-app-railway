@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodejs_service
+    restart: always
+    environment:
+      DB_HOST: ${MYSQLHOST}
+      DB_USER: ${MYSQLUSER}
+      DB_PASSWORD: ${MYSQLPASSWORD}
+      DB_NAME: ${MYSQLDATABASE}
+      DB_PORT: ${MYSQLPORT}
+    ports:
+      - "3000:3000"
+    networks:
+      - fitness_net
+
+networks:
+  fitness_net:
