@@ -5,7 +5,7 @@ exports.getRoutines = async (req, res) => {
 
   try {
     const [rows] = await pool.query(
-      'SELECT * FROM routines WHERE age_group = (SELECT CASE WHEN ? < 60 THEN "Niño" WHEN ? BETWEEN 60 AND 70 THEN "Adulto" ELSE "Adulto Mayor" END)',
+      'SELECT * FROM routines WHERE age_group = (SELECT CASE WHEN ? < 60 THEN "Niño" WHEN ? BETWEEN 60 AND 69 THEN "Adulto" ELSE "Adulto Mayor" END)',
       [age, age]
     );
     res.json(rows);
